@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8"/>
     <title>BuckIT</title>
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
@@ -12,16 +11,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>  -->
-
     <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script th:inline="javascript">
-
         /*<![CDATA[*/
-
         var categories = /*[[${categories}]]*/ 'User Name';
         var products = /*[[${products}]]*/ 'User Name';
-
         /*]]>*/
     </script>
     <!-- Latest compiled and minified JavaScript -->
@@ -34,30 +29,24 @@
                 function ($scope) {
                     console.log(categories);
                     console.log(products);
-
                     $scope.secondHeading = "Products";
-
                     $scope.products = products;
-
                     $scope.filters = {};
-
                     $scope.sort = function (value) {
                         $scope.filters.category = value;
                     }
-
                     $scope.addNewUser = function (userDetails) {
                         $scope.message = userDetails.name + "(" + userDetails.email + ")  (" + userDetails.agreed + ")";
                     }
                     $scope.message = "Ready";
-
-
                 }
             );
     </script>
 </head>
 <body ng-controller="defaultCtrl">
 <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
-<div class="container-fluid" style="margin-top: 20px">
+<div class="container-fluid tab-content" style="margin-top: 20px">
+<div id="home" class="tab-pane fade in active">
     <div class="row">
         <div class="col-md-6 col-md-offset-3 col-sx-12 col-sx-offset-12 col-sm-12 col-md-offset-12">
             <form>
@@ -82,7 +71,6 @@
                                     <!--<button type = "button" class = "btn btn-category ">Travel</button>
                                     <button type = "button" class = "btn btn-category">Adventure</button>
                                     <button type = "button" class = "btn btn-category">Food</button>  -->
-
                                     <div class="bxslider">
                                         <button ng-click="sort('Travel')" type="button" class="btn btn-category ">Travel
                                         </button>
@@ -93,7 +81,6 @@
                                             Food
                                         </button>
                                         <button class="btn btn-category" ng-click="sort('')">See All</button>
-
                                     </div>
                                 </div>
                                 <br><br>
@@ -103,7 +90,6 @@
                                             <td><a href="#" class="phone-link">{{product.name}}</a></td>
                                             <td><img src='{{product.photo}}' class="photo-item"></td>
                                             <td>{{product.price | currency}}</td>
-
                                         </tr>
                                     </table>
                                 </div>
@@ -163,6 +149,21 @@
             </form>
         </div>
     </div>
+    </div>
+
+    <div id="menu1" class="tab-pane fade">
+    <h3>Menu 1</h3>
+    <p>Some content in menu 1.</p>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h3>Menu 2</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+  <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+</ul>
 </div>
 <script th:src="@{/js/bxslider/jquery.bxslider.min.js}"></script>
 <script>
