@@ -1,0 +1,38 @@
+.margin {
+	margin-top: 20%;
+
+}
+
+body {
+	background-image: linear-gradient(#ff7200,  #f6c61e);
+	background-repeat: no-repeat;
+	background-color: #f6c61e;
+
+}
+
+p {
+	font: 6vw Calibri, sans-serif;
+	color: #fff;
+	
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0px;
+}
+
+.content {
+  padding-bottom: 0px;
+}
+
+.btn-center {
+	background: #24fb64;
+	font: 26px Calibri, sans-serif;
+	margin: 10% auto 0;
+	padding: 1% 5%; 
+	display: block;
+	color: #fff;
+}
