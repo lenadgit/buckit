@@ -20,6 +20,11 @@ public class OnboardingController {
 	private final ItemRepository itemRepository;
 
 	@GetMapping({"", "/", "/index"})
+	public String showIndex() {
+		return "index";
+	}
+
+	@GetMapping({"/welcome"})
 	public String showWelcome() {
 		return "welcome";
 	}
