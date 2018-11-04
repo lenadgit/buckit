@@ -1,0 +1,22 @@
+.wrapper {
+
+}
+
+.big-logo {
+	display: block;
+	width: 50%;
+	margin: 15% auto 30%;
+}
+
+.text-welcome {
+	color: #f6c61e;
+	font: 20px OpenSans, sans-serif;
+	margin-bottom: 10%;
+}
+
+.btn-orange {
+	color: #fff;
+	background-image: linear-gradient(to left, #f6cd21,  #ff7200);
+}
+
+
