@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="ProductsApp">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Buck IT</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>  -->
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+        var categories = /*[[${categories}]]*/ 'User Name';
+        var products = /*[[${products}]]*/ 'User Name';
+
+        /*]]>*/
+    </script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <script>
+        angular.module("ProductsApp", [])
+            .controller("defaultCtrl",
+                function ($scope) {
+                    console.log(categories);
+                    console.log(products);
+
+                    $scope.secondHeading = "Products";
+
+                    $scope.products = products;
+
+                    $scope.filters = {};
+
+                    $scope.sort = function (value) {
+                        $scope.filters.category = value;
+                    }
+
+                    $scope.addNewUser = function (userDetails) {
+                        $scope.message = userDetails.name + "(" + userDetails.email + ")  (" + userDetails.agreed + ")";
+                    }
+                    $scope.message = "Ready";
+
+
+                }
+            );
+    </script>
+</head>
+<body ng-controller="defaultCtrl">
+<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sx-12 col-sx-offset-12 col-sm-12 col-md-offset-12">
+            <form>
+                <input type="hidden" th:field="*{id}"/>
+                <div class="pannel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <!--    <h1 class="panel-title">Edit Recipe Information</h1>  -->
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="form-group">
+                                    <!--    <label>Recipe Description:</label>  -->
+                                    <!--    <input type="text" class="form-control" th:field="*{name}"/>  -->
+                                    <input type="search" class="form-control search-text"
+                                           value="Search of inspiration" name="search"/>
+                                    <input type="Submit" class="pull-right sub"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9 form-group">
+                                    <!--<button type = "button" class = "btn btn-category ">Travel</button>
+                                    <button type = "button" class = "btn btn-category">Adventure</button>
+                                    <button type = "button" class = "btn btn-category">Food</button>  -->
+
+                                    <div class="bxslider">
+                                        <button ng-click="sort('Travel')" type="button" class="btn btn-category ">Travel
+                                        </button>
+                                        <button ng-click="sort('Adventure')" type="button" class="btn btn-category">
+                                            Adventure
+                                        </button>
+                                        <button ng-click="sort('Food')" type="button" class="btn btn-category">
+                                            Food
+                                        </button>
+                                        <button class="btn btn-category" ng-click="sort('')">See All</button>
+                                    </div>
+                                </div>
+                                <br><br>
+                                <div class="row">
+                                    <table>
+                                        <tr ng-repeat="product in products | filter : filters">
+                                            <td><a href="#" class="phone-link">{{product.name}}</a></td>
+                                            <td><img src='{{product.photo}}' class="photo-item"></td>
+                                            <td>{{product.price | currency}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-11 ">
+                                        <h1 class="panel-title">Ingredients</h1>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a class="btn btn-default" href="#" role="button">View</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- <ul th:if="${not #lists.isEmpty(recipe.ingredients)}">
+                                             <li th:remove="all">1 Cup of milk</li>
+                                             <li th:remove="all">1 Teaspoon of chocolate</li>
+                                             <li th:remove="all">asdf</li>
+                                             <li th:each="ingredient : ${recipe.ingredients}"
+                                                 th:text="${(ingredient.getAmount() +
+                                             ' ' + ingredient.uom.getName() +
+                                             ' - ' + ingredient.getName())}">1 Teaspoon of Sugar
+                                             </li>
+                                         </ul>  -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">Directions</h1>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">Notes</h1>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/bxslider/jquery.bxslider.min.js}"></script>
+<script>
+    $('.bxslider').bxSlider({
+        minSlides: 1,
+        maxSlides: 3,
+        slideWidth: 150,
+        slideMargin: 10
+    });
+</script>
+</body>
+</html>

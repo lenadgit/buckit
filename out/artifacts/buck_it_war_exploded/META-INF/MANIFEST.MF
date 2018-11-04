@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: BuckIT
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ysmolii
+Implementation-Vendor-Id: com.garage48
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_181
+Main-Class: ${start-class}
+

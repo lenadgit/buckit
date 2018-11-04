@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="ProductsApp">
 <head>
     <meta charset="UTF-8"/>
-    <title>BuckIT</title>
+    <title>Buck IT</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -84,14 +84,12 @@
                                     <button type = "button" class = "btn btn-category">Food</button>  -->
 
                                     <div class="bxslider">
-                                        <button ng-click="sort('Travel')" type="button" class="btn btn-category ">Travel
-                                        </button>
-                                        <button ng-click="sort('Adventure')" type="button" class="btn btn-category">
-                                            Adventure
-                                        </button>
-                                        <button ng-click="sort('Food')" type="button" class="btn btn-category">
-                                            Food
-                                        </button>
+                                        <tr th:each="category : ${categories}">
+                                            <button th:attr="ng-click='sort(\''+${category.getDescription()}+'\');'"
+                                                    type="button" class="btn btn-category "
+                                                    th:text="${category.getDescription()}">
+                                            </button>
+                                        </tr>
                                         <button class="btn btn-category" ng-click="sort('')">See All</button>
                                     </div>
                                 </div>
@@ -107,57 +105,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-md-11 ">
-                                        <h1 class="panel-title">Ingredients</h1>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <a class="btn btn-default" href="#" role="button">View</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <!-- <ul th:if="${not #lists.isEmpty(recipe.ingredients)}">
-                                             <li th:remove="all">1 Cup of milk</li>
-                                             <li th:remove="all">1 Teaspoon of chocolate</li>
-                                             <li th:remove="all">asdf</li>
-                                             <li th:each="ingredient : ${recipe.ingredients}"
-                                                 th:text="${(ingredient.getAmount() +
-                                             ' ' + ingredient.uom.getName() +
-                                             ' - ' + ingredient.getName())}">1 Teaspoon of Sugar
-                                             </li>
-                                         </ul>  -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h1 class="panel-title">Directions</h1>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h1 class="panel-title">Notes</h1>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>

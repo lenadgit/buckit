@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>BuckIT</name>
+	<name>Buck IT</name>
 	<description>Bucket List</description>
 
 	<parent>

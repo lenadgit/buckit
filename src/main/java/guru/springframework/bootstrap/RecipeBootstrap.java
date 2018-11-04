@@ -61,16 +61,48 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 				.categories(categories)
 				.id(1L)
 				.build()));
+
 		itemRepository.saveAll(Arrays.asList(
-				Item.builder().name("Taste croissants in Paris").category(travel).build(),
-				Item.builder().name("Ride an elephant in Thailand").category(travel).build(),
-				Item.builder().name("Experience the Northern Lights in Island").category(travel).build(),
-				Item.builder().name("Visit pyramids in Egypt").category(travel).build(),
-				Item.builder().name("Climb the ancient Mayan ruins").category(travel).build(),
-				Item.builder().name("Explore Tokyo during Cherry Blossom season").category(travel).build(),
-				Item.builder().name("Pray in the Taj Mahal").category(travel).build(),
-				Item.builder().name("Say hi to the Queen in the Great Britain").category(travel).build(),
-				Item.builder().name("Sleep at Everest Base Camp, Nepal").category(travel).build()));
+				// Travel
+				Item.builder().name("Taste croissants in Paris").category(travel).icon("/images/Travel" +
+						"/croissants_Paris" +
+						".png").build(),
+				Item.builder().name("Ride an elephant in Thailand").category(travel).icon("/images/Travel/riding_elephant.png").build(),
+				Item.builder().name("Experience the Northern Lights in Island").category(travel).icon("/images/Travel/Northern_Lights.png").build(),
+				Item.builder().name("Visit pyramids in Egypt").category(travel).icon("/images/Travel/piramides.png").build(),
+				Item.builder().name("Climb the ancient Mayan ruins").category(travel).icon("/images/Travel/maya.png").build(),
+				Item.builder().name("Explore Tokyo during Cherry Blossom season").category(travel).icon("/images/Travel/cherry_tokio.png").build(),
+				Item.builder().name("Pray in the Taj Mahal").category(travel).icon("/images/Travel/tajmachal.png").build(),
+				Item.builder().name("Say hi to the Queen in the Great Britain").category(travel).icon("/images/Travel/queen.png").build(),
+				Item.builder().name("Sleep at Everest Base Camp, Nepal").category(travel).icon("/images/Travel/everest.png").build(),
+				// Food
+				Item.builder().name("Pancake party").category(food).icon("/images/Food/pancakes.png").build(),
+				Item.builder().name("Taste frog legs").category(food).icon("/images/Food/frog_legs.png").build(),
+				Item.builder().name("Bake a Rainbow Cake").category(food).icon("/images/Food/rainbow_cake.png").build(),
+				Item.builder().name("Eat hot sauce in Mexico").category(food).icon("/images/Food/chili.png").build(),
+				// Extreme
+				Item.builder().name("Bungee jumping").category(extreme).icon("/images/Extreme/banga.png").build(),
+				Item.builder().name("Kayaking down the river Rapids").category(extreme).icon("/images/Extreme/kayak.png").build(),
+				Item.builder().name("Paragliding").category(extreme).icon("/images/Extreme/paragliding.png").build(),
+				Item.builder().name("Sky diving").category(extreme).icon("/images/Extreme/Sky_diving.png").build(),
+				Item.builder().name("Kite surfing").category(extreme).icon("/images/Extreme/kite.png").build(),
+				Item.builder().name("Water surfing").category(extreme).icon("/images/Extreme/serfing.png").build(),
+				// Simple&Funny
+				// Item.builder().name("Kick yourself").category(simple).icon("/images/sunrise.png").build(),
+				// Business
+				Item.builder().name("Become a mentor").category(business).icon("/images/Business/mentor.png").build(),
+				Item.builder().name("Rock on the hackathon").category(business).icon("/images/Business/hakathon.png").build(),
+				Item.builder().name("Pop up a start-up").category(business).icon("/images/Business/startup.png").build(),
+				Item.builder().name("Fuck up like the first time").category(business).icon("/images/Business/money.png").build(),
+				// Social
+				Item.builder().name("Meet the sunrise with your friends").category(social).icon("/images/Social" +
+						"/sunrise.png").build(),
+				Item.builder().name("Tell the story of your undivided love on a speed date").category(social).icon("/images/Social/speed_dating.png").build(),
+				Item.builder().name("Marry your beloved one").category(social).icon("/images/Social/marriege.png").build(),
+				Item.builder().name("Divorce why suffer").category(social).icon("/images/Social/divorce.png").build(),
+				Item.builder().name("Leave your favourite book on a book crossing").category(social).icon("/images/Social/book_crosing.png").build()
+		));
+
 		categoryRepository.saveAll(categories);
 		userRepository.saveAll(Arrays.asList(User.builder()
 				.categories(categories)

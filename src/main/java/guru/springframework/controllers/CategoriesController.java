@@ -13,7 +13,7 @@ public class CategoriesController {
 
 	private final CategoryRepository categoryRepository;
 
-	@GetMapping("/categories")
+	@GetMapping("/user/{id}/categories")
 	public String showById(Model model){
 
 		model.addAttribute("categories", categoryRepository.findAll());
